@@ -15,9 +15,7 @@ namespace NuGetGallery
 
         Task<bool> FileExistsAsync(string folderName, string fileName);
 
-        Task<Stream> GetPackageFileAsync(string folderName, string fileName);
-
-        Task<Stream> GetReadmeFileAsync(string folderName, string fileName);
+        Task<Stream> GetFileAsync(string folderName, string fileName);
 
 
         /// <summary>

@@ -55,23 +55,7 @@ namespace NuGetGallery
         }
 
          
-        public async Task<Stream> GetPackageFileAsync(string folderName, string fileName)
-        {
-            if (String.IsNullOrWhiteSpace(folderName))
-            {
-                throw new ArgumentNullException(nameof(folderName));
-            }
-
-            if (String.IsNullOrWhiteSpace(fileName))
-            {
-                throw new ArgumentNullException(nameof(fileName));
-            }
-
-            return (await GetBlobContentAsync(folderName, fileName)).Data;
-        }
-
-        //Gets the README for the package from the Blob storage
-        public async Task<Stream> GetReadmeFileAsync(string folderName, string fileName)
+        public async Task<Stream> GetFileAsync(string folderName, string fileName)
         {
             if (String.IsNullOrWhiteSpace(folderName))
             {
@@ -143,8 +127,6 @@ namespace NuGetGallery
             blob.Properties.ContentType = GetContentType(folderName);
             await blob.SetPropertiesAsync();
         }
-
-        //todo: GetFileAsync Method to download README.md
 
         public async Task<bool> IsAvailableAsync()
         {

@@ -439,7 +439,7 @@ namespace NuGetGallery
                 //Reads the README file and push to the view
                 using (var reader = new StreamReader(await _packageFileService.DownloadReadmeFileAsync(package), Encoding.UTF8))
                 {
-                    model.ReadMe = reader.ReadToEnd();
+                    model.ReadmeHTML = reader.ReadToEnd();
                 }
             }
 
@@ -1564,5 +1564,6 @@ namespace NuGetGallery
             // Ignore those pesky '\r' characters which screw up comparisons.
             return !String.Equals(posted.Replace("\r", ""), package.Replace("\r", ""), StringComparison.Ordinal);
         }
+        
     }
 }
